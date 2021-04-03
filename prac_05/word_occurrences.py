@@ -4,20 +4,35 @@ CP1404/CP5632 Practical
 word_occurrences
 """
 
-word_occurrences = {}
+WORD_OCCURRENCES = {}
 
-words = []
-occurrences = []
-sentence = "this is a collection of words of nice words this is a fun thing it is".split(" ")
-for index, word in enumerate(sentence):
-    if word not in word_occurrences.keys():
-        word_occurrences[word] = 0
-    if word == sentence[index]:
-        word_occurrences[word] += 1
-print(word_occurrences)
-for word, occurrence in word_occurrences.items():
-    words.append(word)
-words.sort()
-longest_string = (max(words, key=len))
-for word in words:
-    print("{:{}}{}".format(word + " :", len(longest_string) + 3, word_occurrences[word]))
+
+def main():
+    """Analise user generated sentence and count each occurrence of each separate word"""
+    words = []
+    sentence = input("Text: ").split(" ")
+    returns_word_count(sentence)
+    print(WORD_OCCURRENCES)
+    sort_keys_into_list(words)
+    longest_string = (max(words, key=len))
+    for word in words:
+        print("{:{}}{}".format(word + " :", len(longest_string) + 3, WORD_OCCURRENCES[word]))
+
+
+def sort_keys_into_list(words):
+    """Return list of sorted keys"""
+    for word, occurrence in WORD_OCCURRENCES.items():
+        words.append(word)
+    words.sort()
+
+
+def returns_word_count(sentence):
+    """Count each occurrence of word and add to dictionary then reset for next word"""
+    for index, word in enumerate(sentence):
+        if word not in WORD_OCCURRENCES.keys():
+            WORD_OCCURRENCES[word] = 0
+        if word == sentence[index]:
+            WORD_OCCURRENCES[word] += 1
+
+
+main()

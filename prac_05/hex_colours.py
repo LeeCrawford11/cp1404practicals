@@ -14,7 +14,7 @@ empty_value = True
 colour_name = input("Enter colour name: ").lower()
 while empty_value:
     colour_hash = [hex_number for key, hex_number in HEX_COLOURS.items() if colour_name in key.lower()]
-    if not colour_hash:
+    if not colour_hash:  # check its not empty
         print("Please enter a valid colour")
         colour_name = input("Enter colour name: ").lower()
     else:

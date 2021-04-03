@@ -13,14 +13,14 @@ def main():
     sentence = input("Text: ").split(" ")
     returns_word_count(sentence)
     print(WORD_OCCURRENCES)
-    sort_keys_into_list(words)
+    extract_keys_into_sorted_list(words)
     longest_string = (max(words, key=len))
     for word in words:
         print("{:{}}{}".format(word + " :", len(longest_string) + 3, WORD_OCCURRENCES[word]))
 
 
-def sort_keys_into_list(words):
-    """Return list of sorted keys"""
+def extract_keys_into_sorted_list(words):
+    """Sort list of keys"""
     for word, occurrence in WORD_OCCURRENCES.items():
         words.append(word)
     words.sort()

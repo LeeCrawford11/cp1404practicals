@@ -10,7 +10,7 @@ def main():
     score = float(input("Enter score: "))
     grade = determine_grade(score)
     print(grade)
-    random_score = random.randint(1,100)
+    random_score = random.randint(1, 100)
     print(random_score)
     print(determine_grade(random_score))
 
@@ -29,4 +29,3 @@ def determine_grade(score):
 
 
 main()
-

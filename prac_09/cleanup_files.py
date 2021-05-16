@@ -16,7 +16,6 @@ def main():
     for filename in os.listdir('.'):
         if os.path.isdir(filename):
             continue
-
         new_name = get_fixed_filename(filename)
         print("Renaming {} to {}".format(filename, new_name))
     print(os.getcwd())
@@ -32,15 +31,25 @@ def main():
 
 def get_fixed_filename(filename):
     """Return a 'fixed' version of filename."""
+    filename = filename.replace(" ", "_").replace(".TXT", ".txt")
+    new_name = ""
+    for index, char in enumerate(filename):
+        if char.isupper() and (filename[index-1].islower() or filename[index-1].isupper()):
+            new_name += "_"
+            new_name += char.upper()
+        else:
+            new_name += char
+    return_name = ""
+    for index, char in enumerate(new_name):
+        if char.islower() and new_name[index-1] == "_":
+            return_name += char.upper()
+        else:
+            return_name += char
+    return_name = return_name[1:]
     try:
-        if " " in filename:
-            new_name = filename.replace(" ", "_")
+        return return_name
     except UnboundLocalError:
         pass
-    for index, char in enumerate(filename):
-        if char.islower() and filename[index].isupper():
-            new_name = filename[:index+1] + " " + filename[index:]
-    return new_name
 
 
 def demo_walk():
